@@ -12,7 +12,7 @@ class matrix
     
     public:
         matrix(std::uint8_t width,std::uint8_t height); // define a matrix of width columns and height rows full of zeros
-        matrix(std::vector<std::vector<double>> vec);
+        matrix(std::vector<std::vector<double>> vec); // define matrix with a matrix duh
 
         std::uint8_t getWidth()  const;
         std::uint8_t getHeight() const;
