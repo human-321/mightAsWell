@@ -13,9 +13,10 @@ std::uint8_t matrix::getHeight() { std::size(m_components);    }
 void matrix::print()
 {
     for(std::uint8_t row {0}; row <= getHeight(); ++row) {
-        for(std::uint8_t column {0}; column <= getHeight(); ++column) {
+        for(std::uint8_t column {0}; column <= getWidth(); ++column) {
             std::cout << m_components[row][column] << ' ';
         }
+        if(row < getHeight() - 1) {std::cout << '\n'}
     }
 }
 
