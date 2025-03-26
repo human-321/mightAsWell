@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <cstdint>
+#include <iostream>
 
 class matrix
 {
@@ -10,13 +11,13 @@ class matrix
         std::vector<std::vector<double>> m_components;
     
     public:
-        matrix(std::uint8_t width,std::uint8_t height);
+        matrix(int width,int height);
         matrix(std::vector<std::vector<double>> vec);
 
-        std::uint8_t getWidth();
-        std::uint8_t getHeight();
+        std::uint8_t getWidth()  const;
+        std::uint8_t getHeight() const;
 
-        void print();
+        void print() const;
 };
 
 
