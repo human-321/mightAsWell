@@ -14,7 +14,7 @@ void matrix::print()
 {
     for(std::uint8_t row {0}; row <= getHeight(); ++row) {
         for(std::uint8_t column {0}; column <= getHeight(); ++column) {
-            
+            std::cout << m_components[row][column] << ' ';
         }
     }
 }
