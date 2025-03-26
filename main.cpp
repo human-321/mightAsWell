@@ -2,12 +2,16 @@
 #include <cstdint>
 #include <vector>
 
+#include "matrix.h"
+
 
 int main() {
 
-    std::vector<int> nums {2,3,4};
 
     std::cout << "wassup\n";
+
+    matrix mat(3,3);
+    mat.print();
 
     return 0;
 }   
