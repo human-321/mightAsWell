@@ -6,6 +6,7 @@ matrix::matrix(std::uint8_t width,std::uint8_t height)
 {
     m_components = std::vector<std::vector<double>>(height, std::vector<double>(width,0) );
 }
+matrix::matrix(std::vector<std::vector<double>> vec) { m_components = vec; }
 
 std::uint8_t matrix::getWidth()  { std::size(m_components[0]); }
 std::uint8_t matrix::getHeight() { std::size(m_components);    }
