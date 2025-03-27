@@ -16,6 +16,19 @@ matrix& matrix::setComponent(std::uint8_t row,std::uint8_t column, double value)
     m_components[row][column] = value;
     return *this;
 }
+matrix& matrix::setComponent(ent entry, double value)
+{
+    m_components[entry.row][entry.column] = value;
+    return *this;
+}
+matrix& matrix::setComponents(std::vector<ent> entrys,double value)
+{
+    for(ent entry : entrys) {
+        setComponent(entry,value);
+    }
+    return *this;
+}
+
 
 void matrix::print() const
 {
@@ -28,32 +41,37 @@ void matrix::print() const
 }
 
 
-
-std::vector<double&> matrix::getComponentsReferences() const
+matrix operator*(matrix& mat,double scalar)
 {
-    std::vector<double&> output {};
-
-    for(std::uint8_t row {0}; row < getHeight(); ++row) {
-        for(std::uint8_t column {0}; column < getWidth(); ++column) {
-            output.push_back(m_components[row][column]);
+    for(std::uint8_t row {0}; row < mat.getHeight(); ++row) {
+        for(std::uint8_t column {0}; column < mat.getWidth(); ++column) {
+            mat.m_components[row][column] *= scalar;
         }
     }
-    
-    return output;
-    
+    matrix temp {mat};
+    return temp; // to make the errors shut up
 }
 
-matrix operator*(matrix mat,double scalar)
-{
-    std::vector<double&> refs {mat.getComponentsReferences()};
+matrix operator*(double scalar,matrix& mat) {return mat * scalar;}
 
-    for(std::uint8_t i {0};i < refs.size();++i) {
-        refs[i] *= scalar;
+
+
+
+
+//this is non matrix memeber functions nor overloads
+
+matrix identityMatrix(int size)
+{
+    matrix mat(size,size);
+    int i {0};
+    while (i < size)
+    {
+        mat.setComponent(i,i,1);
+        ++i;
     }
     return mat;
 }
 
-matrix operator*(double scalar,matrix mat) {return mat * scalar;}
 
 
 
