@@ -29,3 +29,34 @@ void matrix::print() const
 
 
 
+std::vector<double&> matrix::getComponentsReferences() const
+{
+    std::vector<double&> output {};
+
+    for(std::uint8_t row {0}; row < getHeight(); ++row) {
+        for(std::uint8_t column {0}; column < getWidth(); ++column) {
+            output.push_back(m_components[row][column]);
+        }
+    }
+    
+    return output;
+    
+}
+
+matrix operator*(matrix mat,double scalar)
+{
+    std::vector<double&> refs {mat.getComponentsReferences()};
+
+    for(std::uint8_t i {0};i < refs.size();++i) {
+        refs[i] *= scalar;
+    }
+    return mat;
+}
+
+matrix operator*(double scalar,matrix mat) {return mat * scalar;}
+
+
+
+
+
+
