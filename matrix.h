@@ -9,6 +9,8 @@ class matrix
 {
     private:
         std::vector<std::vector<double>> m_components;
+
+        std::vector<double&> getComponentsReferences() const;
     
     public:
         matrix(std::uint8_t width,std::uint8_t height); // define a matrix of width columns and height rows full of zeros
@@ -22,6 +24,8 @@ class matrix
         matrix& setComponent(std::uint8_t row,std::uint8_t column, double value);
 
         void print() const; // simple bare bones display for testing
+
+        friend matrix operator*(matrix mat,double scalar);
 };
 
 
